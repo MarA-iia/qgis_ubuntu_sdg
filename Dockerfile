@@ -31,7 +31,7 @@ RUN    echo "deb-src https://qgis.org/ubuntugis xenial main" >> /etc/apt/sources
 RUN    apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
 
 RUN    apt-get -y update                                                 \
-    && apt-get -y install --no-install-recommends  --allow-unauthenticated python-requests        \
+    && apt-get -y install --no-install-recommends  --allow-unauthenticated python3-requests        \
                                                   python3-numpy           \
                                                   python3-pandas          \
                                                   python3-scipy           \
