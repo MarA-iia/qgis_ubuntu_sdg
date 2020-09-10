@@ -46,11 +46,9 @@ RUN    apt-get -y update                                                 \
     && apt-get purge                                                     \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN apt-get  install xvfb xserver-xephyr vnc4server -y
-RUN pip3 install pyvirtualdisplay
+RUN pip3 install -r https://bitbucket.org/hu-geomatics/enmap-box/raw/develop/requirements.txt
 RUN apt-get update -y
-RUN Xvfb :99 -ac -noreset & 
-RUN export DISPLAY=:99
+
 
 # Called when the Docker image is started in the container
 ADD start.sh /start.sh
