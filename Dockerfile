@@ -6,7 +6,6 @@ ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
 
 ENV TZ Italy/Rome
-
 # Need to have apt-transport-https in-place before drawing from
 # https://qgis.org
 RUN    echo $TZ > /etc/timezone                                              \
@@ -32,14 +31,14 @@ RUN    apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
 
 RUN    apt-get -y update                                                 \
     && apt-get -y install --no-install-recommends  --allow-unauthenticated python3-requests        \
-                                                  python3-numpy           \
-                                                  python3-pandas          \
-                                                  python3-scipy           \
-                                                  python3-matplotlib      \
-                                                  python3-pyside.qtwebkit \
+                                                  python-numpy           \
+                                                  python-pandas          \
+                                                  python-scipy           \
+                                                  python-matplotlib      \
+                                                  python-pyside.qtwebkit \
                                                   gdal-bin               \
                                                   qgis                   \
-                                                  python3-qgis            \
+                                                  python-qgis            \
 												  python3-pip            \
                                                   qgis-provider-grass    \
                                                   grass                  \
@@ -49,7 +48,6 @@ RUN    apt-get -y update                                                 \
 
 RUN pip3 install -r https://bitbucket.org/hu-geomatics/enmap-box/raw/develop/requirements.txt
 RUN apt-get update -y
-
 
 # Called when the Docker image is started in the container
 ADD start.sh /start.sh
