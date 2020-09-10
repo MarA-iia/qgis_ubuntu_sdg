@@ -1,11 +1,11 @@
 FROM ubuntu:xenial
-MAINTAINER Tim Cera <tim@cerazone.net>
+MAINTAINER IIA CNR  <mariella.aquilino@iia.cnr.it>
 
 ## for apt to be noninteractive
 ENV DEBIAN_FRONTEND noninteractive
 ENV DEBCONF_NONINTERACTIVE_SEEN true
 
-ENV TZ America/New_York
+ENV TZ Italy/Rome
 
 # Need to have apt-transport-https in-place before drawing from
 # https://qgis.org
@@ -46,8 +46,16 @@ RUN    apt-get -y update                                                 \
     && apt-get purge                                                     \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+RUN apt-get install xvfb xserver-xephyr vnc4server -y
+RUN pip3 install pyvirtualdisplay
+RUN apt-get update -y
+RUN Xvfb :99 -ac -noreset & 
+RUN export DISPLAY=:99
+
 # Called when the Docker image is started in the container
 ADD start.sh /start.sh
 RUN chmod 0755 /start.sh
 
 CMD /start.sh
+
+
