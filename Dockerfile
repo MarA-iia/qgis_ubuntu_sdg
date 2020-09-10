@@ -31,7 +31,7 @@ RUN    echo "deb-src https://qgis.org/ubuntugis xenial main" >> /etc/apt/sources
 RUN    apt-key adv --keyserver keyserver.ubuntu.com --recv-key CAEB3DC3BDF7FB45
 
 RUN    apt-get -y update                                                 \
-    && apt-get -y install --no-install-recommends python-requests        \
+    && apt-get -y install --no-install-recommends  --allow-unauthenticated python-requests        \
                                                   python-numpy           \
                                                   python-pandas          \
                                                   python-scipy           \
@@ -46,7 +46,7 @@ RUN    apt-get -y update                                                 \
     && apt-get purge                                                     \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN apt-get install xvfb xserver-xephyr vnc4server -y
+RUN apt-get  install xvfb xserver-xephyr vnc4server -y
 RUN pip3 install pyvirtualdisplay
 RUN apt-get update -y
 RUN Xvfb :99 -ac -noreset & 
