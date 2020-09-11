@@ -15,7 +15,6 @@ RUN apt-get -y install --no-install-recommends tzdata                     \
                                                   dirmngr                    \
                                                   apt-transport-https        \
                                                   software-properties-common 
-RUN cd ~/torch; bash install-deps;												  
 RUN apt-get -y install --no-install-recommends    python-software-properties \
     && add-apt-repository ppa:ubuntugis/ubuntugis-unstable                   \
     && rm /etc/localtime                                                     \
