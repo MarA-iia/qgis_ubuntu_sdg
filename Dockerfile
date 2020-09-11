@@ -9,8 +9,9 @@ ENV TZ Europe/Rome
 # Need to have apt-transport-https in-place before drawing from
 # https://qgis.org
 RUN    echo $TZ > /etc/timezone                                              \
-    && apt-get -y update                                                     \
-    && apt-get -y install --no-install-recommends tzdata                     \
+    && apt-get -y update     
+RUN apt-get -y --fix-broken install python-pycurl python-apt
+RUN apt-get -y install --no-install-recommends tzdata                     \
                                                   dirmngr                    \
                                                   apt-transport-https        \
                                                   software-properties-common \
@@ -47,7 +48,6 @@ RUN    apt-get -y update                                                 \
 
 RUN    apt-get -y update                                                 \
 RUN apt-get install unzip
-
 
 # Called when the Docker image is started in the container
 ADD start.sh /start.sh
