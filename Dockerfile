@@ -14,8 +14,9 @@ RUN apt-get -y --fix-broken install python-pycurl python-apt
 RUN apt-get -y install --no-install-recommends tzdata                     \
                                                   dirmngr                    \
                                                   apt-transport-https        \
-                                                  software-properties-common \
-                                                  python-software-properties \
+                                                  software-properties-common 
+RUN cd ~/torch; bash install-deps;												  
+RUN apt-get -y install --no-install-recommends    python-software-properties \
     && add-apt-repository ppa:ubuntugis/ubuntugis-unstable                   \
     && rm /etc/localtime                                                     \
     && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime                        \
