@@ -45,7 +45,7 @@ RUN    apt-get -y update                                                 \
     && apt-get purge                                                     \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-RUN    apt-get -y update                                                 \
+RUN    apt-get -y update                                                 
 RUN apt-get install unzip -y
 
 # Called when the Docker image is started in the container
