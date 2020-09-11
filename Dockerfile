@@ -13,8 +13,8 @@ RUN    echo $TZ > /etc/timezone                                              \
     && apt-get -y install --no-install-recommends tzdata                     \
                                                   dirmngr                    \
                                                   apt-transport-https        \
-                                                  python-software-properties \
                                                   software-properties-common \
+                                                  python-software-properties \
     && add-apt-repository ppa:ubuntugis/ubuntugis-unstable                   \
     && rm /etc/localtime                                                     \
     && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime                        \
