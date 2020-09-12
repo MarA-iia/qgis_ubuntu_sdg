@@ -46,7 +46,7 @@ RUN    apt-get -y update                                                 \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN    apt-get -y update                                                 
-RUN apt-get install unzip -y
+RUN apt-get install unzip xfce4 xfce4-goodies -y
 
 # Called when the Docker image is started in the container
 ADD start.sh /start.sh
